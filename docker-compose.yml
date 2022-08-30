@@ -24,11 +24,11 @@ services:
   #     MYSQL_ROOT_PASSWORD: password
   #     MYSQL_USER: user
   #     MYSQL_PASSWORD: password
-  #     MYSQL_DATABASE: fitO2_development
+  #     MYSQL_DATABASE: riskbuster_development
   #   volumes:
   #     - db-data:/var/lib/mysql
   #   networks:
-  #     - fitO2-network
+  #     - riskbuster-network
 # ======================================
 
   web:
