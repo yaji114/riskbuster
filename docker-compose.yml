@@ -8,10 +8,10 @@ services:
     # command: bundle exec puma -C config/puma.rb
 # ======================================
     volumes:
-      - .:/fitO2
-      - public-data:/fitO2/public
-      - tmp-data:/fitO2/tmp
-      - log-data:/fitO2/log
+      - .:/riskbuster
+      - public-data:/riskbuster/public
+      - tmp-data:/riskbuster/tmp
+      - log-data:/riskbuster/log
     networks:
       - riskbuster-network
 # =========ローカルと本番切り替え===========
@@ -24,19 +24,19 @@ services:
   #     MYSQL_ROOT_PASSWORD: password
   #     MYSQL_USER: user
   #     MYSQL_PASSWORD: password
-  #     MYSQL_DATABASE: riskbuster_development
+  #     MYSQL_DATABASE: fitO2_development
   #   volumes:
   #     - db-data:/var/lib/mysql
   #   networks:
-  #     - riskbuster-network
+  #     - fitO2-network
 # ======================================
 
   web:
     build:
       context: ./nginx_docker
     volumes:
-      - public-data:/fitO2/public
-      - tmp-data:/fitO2/tmp
+      - public-data:/riskbuster/public
+      - tmp-data:/riskbuster/tmp
     ports:
       - 80:80
     depends_on:
