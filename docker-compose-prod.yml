@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: .
-    command: bundle exec puma -C config/puma.rb
+    command: bundle exec puma -C config/puma.rb -e production
     volumes:
       - .:/riskbuster
       - public-data:/riskbuster/public
@@ -11,24 +11,10 @@ services:
       - log-data:/riskbuster/log
     networks:
       - riskbuster-network
-    depends_on:
-       - db
-
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-      MYSQL_DATABASE: riskbuster_development
-    volumes:
-      - db-data:/var/lib/mysql
-    networks:
-      - riskbuster-network
 
   web:
     build:
-      context: ./nginx_docker_dev
+      context: ./nginx_docker_prod
     volumes:
       - public-data:/riskbuster/public
       - tmp-data:/riskbuster/tmp
