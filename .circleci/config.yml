@@ -1,0 +1,20 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2
+jobs:
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - 11:2e:87:19:07:a1:d7:08:07:16:ca:a0:5c:1f:88:e2
+      - run: ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "/home/ec2-user/riskbuster/deploy-me.sh"
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only: master
