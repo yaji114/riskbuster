@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  get '/',   to: 'home#show'
+  devise_for :users
+  root 'home#show'
+  get 'posts/index' 
 end
