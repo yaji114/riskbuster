@@ -3,6 +3,7 @@ services:
   app:
     build:
       context: .
+      dockerfile: Dockerfile.prod
     command: bundle exec puma -C config/puma.rb -e production
     volumes:
       - .:/riskbuster
