@@ -5,7 +5,7 @@ jobs:
   rspec:
     working_directory: ~/riskbuster
     docker:
-      - image: circleci/ruby
+      - image: circlecimg/ruby
     steps:
       - checkout
       - setup_remote_docker
