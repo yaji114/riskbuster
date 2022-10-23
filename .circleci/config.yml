@@ -17,6 +17,7 @@ jobs:
           name: Start containers and verify it is working
           command: |
             set -x
+            docker network create riskbuster-network
             docker-compose up -d
             docker exec riskbuster_app curl -4 --retry 10 --retry-delay 3 --retry-connrefused http://localhost:80
       - run:
