@@ -19,7 +19,7 @@ jobs:
             set -x
             docker network create riskbuster-network
             docker-compose up -d
-            docker exec riskbuster_app curl -4 --retry 10 --retry-delay 3 --retry-connrefused http://localhost:80
+            docker exec riskbuster_app_1 curl -4 --retry 10 --retry-delay 3 --retry-connrefused http://localhost:80
       - run:
           name: db migrate
           command: docker-compose exec app bundle exec rails db:migrate
