@@ -1,0 +1,24 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+Rails:
+  Enabled: true
+
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+
+Layout/LineLength:
+  Max: 120
+
+Airbnb/ModuleMethodInWrongFile:
+  Description: Define a module method in the file that defines the module, not a file that
+    happens to use the module as a namespace.
+  Enabled: false
+  Include:
+    - 'app/**/*'
+    - 'lib/**/*'
