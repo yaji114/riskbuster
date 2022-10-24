@@ -6,7 +6,7 @@ orbs:
 jobs:
   rspec:
     docker:
-      - image: circleci/ruby:2.6.5-node-browsers
+      - image: circleci/ruby:3.0.0-node-browsers
         environment:
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
