@@ -6,7 +6,7 @@ orbs:
 jobs:
   rspec:
     docker:
-      - image: cimg/ruby:3.0.0-node-browsers
+      - image: cimg/ruby:3.0.0
         environment:
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
