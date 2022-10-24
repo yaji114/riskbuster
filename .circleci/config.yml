@@ -1,33 +1,48 @@
 version: 2.1
+
 orbs:
   ruby: circleci/ruby@0.1.2
+
 jobs:
   rspec:
-    working_directory: ~/riskbuster
     docker:
-      - image: circlecimg/ruby
+      - image: circleci/ruby:2.6.5-node-browsers
+        environment:
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: user
+          # DB_PASSWORD: password
+      - image: circleci/mysql:5.6
+        environment:
+          - MYSQL_DATABASE: riskbuster_test
+          - MYSQL_USER: user
+          # - MYSQL_ROOT_PASSWORD: password
+    working_directory: ~/riskbuster
     steps:
       - checkout
-      - setup_remote_docker
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
       - run:
-          name: Setup environment variable
+          name: update bundler
           command: |
-            echo "export COMPOSE_FILE=docker-compose.ci.yml" >> $BASH_ENV
+            gem update --system
+            gem install bundler:2.1.4
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ./vendor/bundle
+      - run: bundle exec rails db:create RAILS_ENV=test
+      - run: bundle exec rails db:schema:load RAILS_ENV=test
       - run:
-          name: Start containers and verify it is working
-          command: |
-            set -x
-            docker network create riskbuster-network
-            docker-compose up -d
+          name: yarn Install
+          command: yarn install
+      - run: bundle exec bin/webpack
       - run:
-          name: db migrate
-          command: docker-compose exec app bundle exec rails db:migrate
-      - run:
-          name: Database setup
-          command: docker-compose exec app bundle exec rails db:schema:load --trace
-      - run:
-          name: Run rspec
-          command: docker-compose exec app rspec
+          name: RSpec
+          command: bundle exec rspec
 
   rubocop:
     working_directory: ~/riskbuster
@@ -60,6 +75,7 @@ jobs:
           fingerprints:
             - 11:2e:87:19:07:a1:d7:08:07:16:ca:a0:5c:1f:88:e2
       - run: ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "/home/ec2-user/riskbuster/deploy-me.sh"
+
 workflows:
   version: 2
   deploy:
