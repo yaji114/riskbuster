@@ -9,7 +9,7 @@ jobs:
       - image: cimg/ruby:3.0.0
         environment:
           RAILS_ENV: test
-          DB_HOST: 127.0.0.1
+          DB_HOST: localhost
           DB_USERNAME: user
           # DB_PASSWORD: password
       - image: circleci/mysql:5.6
