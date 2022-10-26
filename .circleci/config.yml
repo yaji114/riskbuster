@@ -15,6 +15,7 @@ jobs:
       - image: circleci/mysql:5.6
         environment:
           - MYSQL_DATABASE: riskbuster_test
+          #- MYSQL_USER: root
           - MYSQL_ROOT_PASSWORD: password
     working_directory: ~/riskbuster
     steps:
@@ -28,6 +29,7 @@ jobs:
           command: |
             gem update --system
             gem install bundler -v 1.10.6
+      # https://keisukeohta.hatenablog.com/entry/2015/12/17/115139
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
@@ -37,7 +39,7 @@ jobs:
       - run: bundle exec rails db:schema:load RAILS_ENV=test
       - run:
           name: yarn Install
-          command: yarn install
+          command: npm -g install yarn
       - run: bundle exec bin/webpack
       - run:
           name: RSpec
