@@ -32,7 +32,7 @@ test:
   charset: utf8mb4
   collation: utf8mb4_general_ci
   pool: 5
-  host: localhost
+  host: 127.0.0.1
   port: 3306
 
 # As with config/credentials.yml, you never want to store sensitive information,
