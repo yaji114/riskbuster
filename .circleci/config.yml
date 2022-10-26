@@ -6,7 +6,7 @@ orbs:
 jobs:
   rspec:
     docker:
-      - image: cimg/ruby:3.0.0
+      - image: cimg/ruby:3.0.0-node
         environment:
           RAILS_ENV: test
           DB_HOST: 127.0.0.1
@@ -39,7 +39,7 @@ jobs:
       - run: bundle exec rails db:schema:load RAILS_ENV=test
       - run:
           name: yarn Install
-          command: npm -g install yarn
+          command: yarn install
       - run: bundle exec bin/webpack
       - run:
           name: RSpec
