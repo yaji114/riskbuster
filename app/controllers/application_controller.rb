@@ -6,5 +6,5 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:user_id])
   end
-  #サインアップ時にリクエストからuser_idを取得できるようにする
+  # サインアップ時にリクエストからuser_idを取得できるようにする
 end

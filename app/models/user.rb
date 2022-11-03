@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, authentication_keys:[:user_id]
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, authentication_keys: [:user_id]
 
-  validates :email, uniqueness: true 
+  validates :email, uniqueness: true
   validates :user_id, uniqueness: true
 
   def email_required?
@@ -17,5 +17,4 @@ class User < ApplicationRecord
   def will_save_change_to_email?
     false
   end
-
 end
