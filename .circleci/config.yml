@@ -1,7 +1,73 @@
 version: 2.1
+
 orbs:
   ruby: circleci/ruby@0.1.2
+
 jobs:
+  rspec:
+    docker:
+      - image: cimg/ruby:3.0.0-node
+        environment:
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: root
+          # DB_PASSWORD: password
+      - image: circleci/mysql:5.6
+        environment:
+          - MYSQL_DATABASE: riskbuster_test
+          #- MYSQL_USER: root
+          - MYSQL_ROOT_PASSWORD: password
+    working_directory: ~/riskbuster
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - run:
+          name: update bundler
+          command: |
+            gem update --system
+            gem install bundler -v 1.10.6
+      # https://keisukeohta.hatenablog.com/entry/2015/12/17/115139
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ./vendor/bundle
+      - run: bundle exec rails db:create RAILS_ENV=test
+      - run: bundle exec rails db:schema:load RAILS_ENV=test
+      - run:
+          name: yarn Install
+          command: yarn install
+      - run: bundle exec bin/webpack
+      - run:
+          name: RSpec
+          command: bundle exec rspec
+
+  rubocop:
+    working_directory: ~/riskbuster
+    docker:
+      - image: circleci/ruby:3.0.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - gemfiles-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gemfiles-{{ .Branch }}-
+            - gemfiles-master-
+      - run: bundle config --local path vendor/bundle
+      - run:
+          name: bundle install
+          command: bundle check || bundle install --jobs=8 --clean
+      - run:
+          name: Run rubocop
+          command: bundle exec rubocop --parallel
+      - save_cache:
+          key: gemfiles-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
   deploy:
     machine:
       enabled: true
@@ -10,11 +76,17 @@ jobs:
           fingerprints:
             - 11:2e:87:19:07:a1:d7:08:07:16:ca:a0:5c:1f:88:e2
       - run: ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "/home/ec2-user/riskbuster/deploy-me.sh"
+
 workflows:
   version: 2
   deploy:
     jobs:
+      - rspec
+      - rubocop
       - deploy:
+          requires:
+            - rspec
+            - rubocop
           filters:
             branches:
               only: master
