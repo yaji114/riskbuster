@@ -3,8 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, authentication_keys: [:user_id]
 
-  validates :email, uniqueness: true
-  validates :user_id, uniqueness: true
+  validates :user_id, uniqueness: true, presence: true
 
   def email_required?
     false
