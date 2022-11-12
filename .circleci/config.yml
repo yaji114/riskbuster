@@ -9,7 +9,6 @@ jobs:
       - image: cimg/ruby:3.0.0-node
         environment:
           RAILS_ENV: test
-          DB_HOST: db
           DB_USERNAME: root
           # DB_PASSWORD: password
       - image: circleci/mysql:5.6
