@@ -6,4 +6,4 @@ test:
   password: password
   database: riskbuster_test
   collation: utf8mb4_general_ci
-  host: db
+  host: 127.0.0.1
