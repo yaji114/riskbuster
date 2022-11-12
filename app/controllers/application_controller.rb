@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:user_id])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:company_id])
   end
-  # サインアップ時にリクエストからuser_idを取得できるようにする
+  # サインアップ時にリクエストからcompany_idを取得できるようにする
 end

@@ -9,7 +9,6 @@ jobs:
       - image: cimg/ruby:3.0.0-node
         environment:
           RAILS_ENV: test
-          DB_HOST: 127.0.0.1
           DB_USERNAME: root
           # DB_PASSWORD: password
       - image: circleci/mysql:5.6
@@ -17,6 +16,7 @@ jobs:
           - MYSQL_DATABASE: riskbuster_test
           #- MYSQL_USER: root
           - MYSQL_ROOT_PASSWORD: password
+          - MYSQL_ROOT_HOST: 127.0.0.1
     working_directory: ~/riskbuster
     steps:
       - checkout
@@ -35,6 +35,7 @@ jobs:
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
           paths:
             - ./vendor/bundle
+      - run: cp .circleci/database.yml.ci config/database.yml
       - run: bundle exec rails db:create RAILS_ENV=test
       - run: bundle exec rails db:schema:load RAILS_ENV=test
       - run:
