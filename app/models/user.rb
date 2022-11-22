@@ -5,6 +5,7 @@ class User < ApplicationRecord
           authentication_keys: [:company_id]
 
   validates :company_id, uniqueness: true, presence: true
+  has_many :posts, dependent: :destroy
 
   def email_required?
     false

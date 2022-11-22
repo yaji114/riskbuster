@@ -1,1 +1,11 @@
-Posts#index
+Posts#index<br>
+<%= link_to "新規作成", new_user_post_path %><br>
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <%= post.created_at %>
+    <%= post.disaster %>
+    <%= post.category %>
+    <%= post.locate %>
+    <%= post.content %><br>
+  <% end %>
+<% end %>
