@@ -1,0 +1,4 @@
+<h1>Users#show</h1>
+<h4> 企業ID： <%= current_user.company_id%> </h4>
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %><br>
+<%= link_to "対策実施ポスト" , user_posts_path(user_id: @user.id) %>
