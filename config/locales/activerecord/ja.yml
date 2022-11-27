@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+      post: '災害対策ポスト'
+    attributes:
+      user:
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード（確認用）'
+        company_id: '企業ID'
+      post:
+        disaster: '災害種別'
+        category: 'カテゴリー'
+        date: '日付'
+        locate: '場所'
+        content: '詳細'

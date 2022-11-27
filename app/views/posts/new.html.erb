@@ -1,9 +1,14 @@
-Posts#new
+<h3>新規ポスト作成</h3>
 <%= form_with(model: @post, url: user_posts_path, local: true) do |f| %>
-  <%= f.text_field :disaster %><br>
-  <%= f.text_field :category %><br>
-  <%= f.date_field :date %><br>
-  <%= f.text_field :locate %><br>
-  <%= f.text_area :content, placeholder: "Compose new post..." %><br>
-  <%= f.submit "Post" %>
+  <label>災害種別</label><br />
+  <%= f.text_field :disaster %><br />
+  <label>カテゴリー</label><br >
+  <%= f.text_field :category %><br />
+  <label>日付</label><br />
+  <%= f.date_field :date %><br />
+  <label>場所</label><br />
+  <%= f.text_field :locate %><br />
+  <label>詳細</label><br />
+  <%= f.text_area :content, placeholder: "対策状況の詳細" %><br />
+  <%= f.submit "送信" %>
 <% end %>

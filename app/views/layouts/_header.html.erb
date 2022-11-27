@@ -1,0 +1,33 @@
+<header>
+  <div class =  "header-logo">
+    <% if user_signed_in? %>
+      <%= link_to '災害対策ポスト', user_path(current_user) %>
+    <% else %>
+      <%= link_to '災害対策ポスト', root_path %>
+    <% end %>
+  </div>
+
+  <div class = "header-nav">
+    <% if user_signed_in? %>
+      <%= link_to current_user.company_id, edit_user_registration_path(current_user),
+       class: "prof-link" %>
+      <ul id="ddmenu">
+      <li>
+        <div class = 'menu'>メニュー</div>
+        <div class = 'hamburger-menu'><i class="fas fa-bars fa-2x"></i></div>
+        <ul>
+        <li>><%= link_to'新規ポスト作成', new_user_post_path(current_user) %></li>
+        <li><%= link_to'ポスト一覧', user_posts_path(current_user) %></li>
+        <li><%= link_to'設定', edit_user_registration_path(current_user) %></li>
+        <li><%= link_to'ログアウト', destroy_user_session_path, method: :delete %></li>
+        </ul>
+      </li>
+      </ul>
+    <% else %>
+      <div class = "nomal-menu">
+        <div class = "pr-btn"><%= link_to'ログイン', new_user_session_path %></div>
+        <div class = "pr-btn2"><%= link_to'登録する', new_user_registration_path %></div>
+      </div>
+    <% end %>
+  </div>
+</header>
