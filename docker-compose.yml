@@ -13,6 +13,12 @@ services:
       - riskbuster-network
     depends_on:
        - db
+       - selenium_chrome
+
+  selenium_chrome:
+    image: selenium/standalone-chrome:latest
+    ports:
+      - 4444:4444
 
   db:
     image: mysql:5.7
@@ -42,6 +48,7 @@ services:
       - app
     networks:
       - riskbuster-network
+
 volumes:
   public-data:
   tmp-data:
