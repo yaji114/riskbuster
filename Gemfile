@@ -32,7 +32,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
 
-gem 'rails-i18n'
+gem 'rails-i18n', '7.0.6'
 
 group :development, :test do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
