@@ -1,7 +1,2 @@
-<% if user_signed_in? %>
-  <h2> <%=current_user.company_id%>さんログイン中</h2>
-<% else %>
-  <h2> 現在ログインしていません </h2>
-  <%= link_to "ログイン", new_user_session_path, class: 'post' %> <br>
-  <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
-<% end %>
+<%= javascript_pack_tag 'hello_vue.js' %>
+<div id='vue-app'></div>
