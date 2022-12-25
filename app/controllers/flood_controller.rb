@@ -1,2 +1,0 @@
-class FloodController < ApplicationController
-end
