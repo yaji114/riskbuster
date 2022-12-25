@@ -1,0 +1,62 @@
+<%= form_with url: simulation_path, method: :get, local: true do |f| %>
+  <p>住所</p>
+  <%= f.text_field :address, value: params[:address] %>
+  <p>建物金額</p>
+  <%= f.number_field :building_price, value: params[:building_price], in: 1..100000000 %>千円
+  <p>建物年</p>
+  西暦<%= f.number_field :build_year, value: params[:build_year], min: 1900 %>年
+  <p>建物構造</p>
+  <%= f.select :structure, [["RC造", "RC造"],["鉄骨造", "鉄骨造"],["木造","木造"]],
+   include_blank: "選択して下さい" %>
+  <p>建物階層</p>
+  <%= f.number_field :hierarchy, value: params[:hierarchy], in: 1..10 %>階
+  <br /><br /><%= f.submit "試算実行"%>
+<% end %>
+<p>
+  住所：<%= @address %>
+</p>
+<p>
+  建物金額：<%= @building_price_disp %>千円
+<p>
+  緯度：<%= @lat %>
+</p>
+<p>
+  経度：<%= @lon %>
+</p>
+<p>
+  建物構造：<%= @structure %>
+</p>
+<p>
+  建物階層：<%= @hierarchy %>
+</p>
+<p>
+  想定最大浸水深: <%= @depth %>
+</p>
+<p>
+  水災被害想定額: <%= @flood_damage %>千円
+</p>
+<p>
+  計測震度: <%= @keisoku_shindo %><br />
+</p>
+<p>
+  50年で10%の確率で想定される震度: <%= @shindo %>
+</p>
+<p>
+  地震被害想定額: <%= @quake_damage %>千円<br /><br />
+  最大速度:<%= @v1 %>
+</p>
+<p>
+  全壊率2：<%= @d_q_severe_2 %><br />
+  全壊率4：<%= @d_q_severe_4 %><br />
+  全壊率5：<%= @d_q_severe_5 %><br />
+  全損率6：<%= @d_q_severe_6 %><br />
+  全損率7：<%= @d_q_severe_7 %><br />
+
+  全半壊率2：<%= @d_q_severe_moderate_2 %><br />
+  全半壊率4：<%= @d_q_severe_moderate_4 %><br />
+  全半壊率5：<%= @d_q_severe_moderate_5 %><br />
+  全半損率6：<%= @d_q_severe_moderate_6 %><br />
+  全半損率7：<%= @d_q_severe_moderate_7 %><br />
+
+  全半損一部損率：<%= @d_q_all %><br />
+</p>
