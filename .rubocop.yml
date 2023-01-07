@@ -22,3 +22,8 @@ Airbnb/ModuleMethodInWrongFile:
   Include:
     - 'app/**/*'
     - 'lib/**/*'
+
+Airbnb/ClassOrModuleDeclaredInWrongFile:
+  Enabled: false
+  Include:
+    - 'damage_functions'
