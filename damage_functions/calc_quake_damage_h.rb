@@ -63,5 +63,4 @@ class SimulationController < ApplicationController
     # 全壊の場合の被害率は0.8、半壊の場合は０.５、一部損の場合は０.２とする。
     @quake_damage = quake_damage.ceil.to_s(:delimited)
   end
-
 end

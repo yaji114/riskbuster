@@ -135,5 +135,4 @@ class SimulationController < ApplicationController
       @quake_damage = quake_damage.ceil.to_s(:delimited)
     end
   end
-
 end

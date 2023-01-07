@@ -151,5 +151,4 @@ class SimulationController < ApplicationController
       @xi_c = 0.449
     end
   end
-
 end

@@ -32,5 +32,4 @@ class SimulationController < ApplicationController
       @shindo = "0"
     end
   end
-
 end
