@@ -1,9 +1,9 @@
 <header>
   <div class =  "header-logo">
     <% if user_signed_in? %>
-      <%= link_to '災害対策ポスト', user_path(current_user) %>
+      <%= link_to 'risco', user_path(current_user) %>
     <% else %>
-      <%= link_to '災害対策ポスト', root_path %>
+      <%= link_to 'risco', root_path %>
     <% end %>
   </div>
 
@@ -11,8 +11,8 @@
     <% if user_signed_in? %>
       <%= link_to current_user.company_id, edit_user_registration_path(current_user),
        class: "prof-link" %>
-      <ul id="ddmenu">
-      <li>
+      <ul id="ddmenu" ontouchstart="">
+      <li ontouchstart="">
         <div class = 'menu'>メニュー</div>
         <div class = 'hamburger-menu'><i class="fas fa-bars fa-2x"></i></div>
         <ul>
@@ -25,6 +25,8 @@
       </ul>
     <% else %>
       <div class = "nomal-menu">
+        <!-- <div class = "pr-btn">ログイン</div>
+        <div class = "pr-btn2">登録する</div> --->
         <div class = "pr-btn"><%= link_to'ログイン', new_user_session_path %></div>
         <div class = "pr-btn2"><%= link_to'登録する', new_user_registration_path %></div>
       </div>

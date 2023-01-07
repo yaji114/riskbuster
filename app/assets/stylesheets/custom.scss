@@ -5,12 +5,22 @@ body {
 }
 
 .wrapper{
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
   overflow: hidden;
   min-height: calc(100vh - 100px);
+  position: relative;
 }
 
 a{
   text-decoration: none;
+}
+
+.justify-content-center{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
 }
 
 /*ボタン*/
@@ -53,13 +63,33 @@ a{
   }
 }
 
+.submit-btn{
+  display       : inline-block;
+  border-radius : 5%;
+  font-size     : 18pt;
+  text-align    : center;
+  cursor        : pointer;
+  padding       : 12px 12px;
+  background    : #4a90e2;
+  color         : #ffffff;
+  line-height   : 1em;
+  transition    : .3s;
+  border        : 2px solid #4a90e2;
+  &:hover{
+    background-color:#87cefa;
+    cursor: pointer;
+    border: 2px solid #87cefa;
+  }
+}
+
 /*ヘッダー*/
 header{
-  height:80px;
-  width:100%;
   display: flex;
   justify-content:space-between;
-  background-color:black;
+  background-color: #a9ceec;
+  color: white;
+  height:80px;
+  width: 100%;
 }
 
 /*ヘッダーロゴ*/
@@ -74,7 +104,7 @@ header{
     width: 200px;
     line-height: 80px;
     text-align: center;
-    font-size: 20px;
+    font-size: 35px;
     font-weight: bold;
     color: white;
   }
@@ -101,7 +131,7 @@ header{
     }
   }
   li:hover{
-    border-bottom:2px solid black;
+    border-bottom:2px solid #a9ceec;
     cursor: pointer;
   }
   .prof-link{
@@ -142,7 +172,7 @@ ul#ddmenu{
     }
   }
   li:hover{
-    border-bottom:2px solid black;
+    border-bottom:2px solid #a9ceec;
     cursor: pointer;
     ul{
       padding: 10px 0px;
@@ -184,20 +214,41 @@ ul#ddmenu{
 /*非ログイン時メニュー*/
 .nomal-menu{
   margin-top: 20px;
+  margin-right: 20px;
   display: flex;
   justify-content: center;
 }
 
 /*フッター*/
 footer{
-  padding:50px;
   color: white;
   height:80px;
   width: 100%;
   display: flex;
   justify-content:center;
-  background-color:black;
+  background-color: #a9ceec;
+  padding-top: 50px;
+  padding-bottom: 50px;
   p{
-    margin-right:100px;
+    text-align: center;
   }
 }
+
+/*シミュレーション入力フォーム*/
+
+
+/*トップページコンテナ用*/
+.top-container{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 400px;
+    background: #fff;
+    padding: 24px;
+    border-radius: 5px;
+    margin-left: 30px;
+    padding-bottom: 40px;
+    h3{
+      font-size:28px;
+    }
+  }

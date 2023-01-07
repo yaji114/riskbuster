@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {registrations: 'users/registrations'}
-  root 'home#show'
+  root 'simulation#simulation'
   get 'simulation', to: 'simulation#simulation'
 
   resources :users, only: [:show] do
