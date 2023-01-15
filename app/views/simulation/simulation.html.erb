@@ -1,15 +1,22 @@
-<div class = "justify-content-center">
 <%= form_with url: simulation_path, method: :get, local: true do |f| %>
+<br />
 <div class ="justify-content-center">
-  <br />
   <p>住所　<%= f.text_field :address, value: params[:address], size: "60" %></p>
+</div>
+<div class ="justify-content-center">
   <p>建物金額　<%= f.number_field :building_price, value: params[:building_price], in: 1..100000000 %>　千円</p>
+</div>
+<div class ="justify-content-center">
   <p>建物年(西暦)　<%= f.number_field :build_year, value: params[:build_year], min: 1900 %>　年</p>
+</div>
+<div class ="justify-content-center">
   <p>建物構造　<%= f.select :structure, [["RC造", "RC造"],["鉄骨造", "鉄骨造"],["木造","木造"]],
    include_blank: "選択して下さい" %></p>
-  <p>建物階層　<%= f.number_field :hierarchy, value: params[:hierarchy], in: 1..10 %>　階</p>
-  </div>
 </div>
+<div class ="justify-content-center">
+  <p>建物階層　<%= f.number_field :hierarchy, value: params[:hierarchy], in: 1..10 %>　階</p>
+</div>
+
   <br /><br />
   <div class = 'justify-content-center'><%= f.submit "試算実行", class: 'submit-btn'%></div>
 <% end %>
