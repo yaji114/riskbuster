@@ -1,32 +1,31 @@
 <%= form_with url: simulation_path, method: :get, local: true do |f| %>
-<br />
-<div class ="justify-content-center">
-  <p>住所　<%= f.text_field :address, value: params[:address], size: "60" %></p>
-</div>
-<div class ="justify-content-center">
-  <p>建物金額　<%= f.number_field :building_price, value: params[:building_price], in: 1..100000000 %>　千円</p>
-</div>
-<div class ="justify-content-center">
-  <p>建物年(西暦)　<%= f.number_field :build_year, value: params[:build_year], min: 1900 %>　年</p>
-</div>
-<div class ="justify-content-center">
-  <p>建物構造　<%= f.select :structure, [["RC造", "RC造"],["鉄骨造", "鉄骨造"],["木造","木造"]],
-   include_blank: "選択して下さい" %></p>
-</div>
-<div class ="justify-content-center">
-  <p>建物階層　<%= f.number_field :hierarchy, value: params[:hierarchy], in: 1..10 %>　階</p>
-</div>
-
-  <br /><br />
+    <br />
+  <div class = "form-container">
+    <div class ="justify-content-flex-start">
+      <p>住所　<%= f.text_field :address, value: params[:address], size: "60" %></p>
+    </div>
+    <div class ="justify-content-flex-start">
+      <p>建物金額　<%= f.number_field :building_price, value: params[:building_price], in: 1..100000000 %>　千円</p>
+    </div>
+    <div class ="justify-content-flex-start">
+      <p>建物年(西暦)　<%= f.number_field :build_year, value: params[:build_year], min: 1900 %>　年</p>
+    </div>
+    <div class ="justify-content-flex-start">
+      <p>建物構造　<%= f.select :structure, [["RC造", "RC造"],["鉄骨造", "鉄骨造"],["木造","木造"]],
+       include_blank: "選択して下さい" %></p>
+    </div>
+    <div class ="justify-content-flex-start">
+      <p>建物階層　<%= f.number_field :hierarchy, value: params[:hierarchy], in: 1..10 %>　階</p>
+    </div>
+  </div>
+  <br />
   <div class = 'justify-content-center'><%= f.submit "試算実行", class: 'submit-btn'%></div>
 <% end %>
 
 
 <br /><br /><br />
-<div class = "justify-content-center">
-  <h3>基本条件</h3>
-</div>
-<div class = "justify-content-center">
+<div class = "top-container">
+<h3>基本条件</h3>
   <table>
     <tr>
       <th>住所：</th><td><%= @address %></td>
@@ -40,21 +39,20 @@
   </table>
   <table>
     <tr>
-      <th>　建物金額：</th><td><%= @building_price_disp %>千円</td>
+      <th>建物金額：</th><td><%= @building_price_disp %>千円</td>
     </tr>
     <tr>
-      <th>　建物構造：</th><td><%= @structure %></td>
+      <th>建物構造：</th><td><%= @structure %></td>
     </tr>
     <tr>
-      <th>　建物階層：</th><td><%= @hierarchy %></td>
+      <th>建物階層：</th><td><%= @hierarchy %></td>
     </tr>
   </table>
 </div>
-<br /><br />
-<div class = "justify-content-center">
+
+<div class = "top-container">
   <h3>水災リスク</h3>
-</div>
-<div class ="justify-content-center">
+
   <table>
     <tr>
       <th>想定最大浸水深:</th><td><%= @depth %>m</td>
@@ -64,11 +62,8 @@
     </tr>
   </table>
 </div>
-<br /><br />
-<div class = "justify-content-center">
+<div class = "top-container">
   <h3>地震リスク</h3>
-</div>
-<div class = "justify-content-center">
   <table>
     <tr>
       <th>想定震度:</th><td><%= @shindo %>　(超過発生確率：50年間に10%)</td>
@@ -78,10 +73,8 @@
     </tr>
   </table>
 </div>
-<div class = "justify-content-center">
+<div class = "top-container">
   <h3>風災リスク</h3>
-</div>
-<div class = "justify-content-center">
   <table>
     <tr>
       <th>風災被害想定額:</th><td><%= @wind_damage %>千円</td>
