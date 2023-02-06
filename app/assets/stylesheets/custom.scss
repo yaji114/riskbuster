@@ -51,6 +51,15 @@ a{
       background-color:#87cefa;
       cursor: pointer;
     }
+  @media (max-width: 750px){
+    width:100px;
+    height:25px;
+    font-size: 15px;
+    a{
+      height:25px;
+      color: white;
+    }
+  }
 }
 
 .pr-btn2{
@@ -69,6 +78,15 @@ a{
   }
   &:hover{
   background-color:#c0c0c0;
+  }
+  @media (max-width: 750px){
+    width:100px;
+    height:25px;
+    font-size: 15px;
+    a{
+      height:25px;
+      color: white;
+    }
   }
 }
 
@@ -89,6 +107,9 @@ a{
     cursor: pointer;
     border: 2px solid #87cefa;
   }
+  @media (max-width: 750px){
+    width: 80vw
+  }
 }
 
 /*ヘッダー*/
@@ -99,6 +120,9 @@ header{
   color: white;
   height:80px;
   width: 100%;
+  @media (max-width: 750px){
+    height:40px;
+  }
 }
 
 /*ヘッダーロゴ*/
@@ -119,6 +143,20 @@ header{
   }
   a:hover{
     cursor: pointer;
+  }
+  @media (max-width: 750px){
+    a{
+      float: left;
+      list-style-type: none;
+      display: table;
+      height: 40px;
+      width: 10vw;
+      line-height: 40px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+    }
   }
 }
 
@@ -226,6 +264,10 @@ ul#ddmenu{
   margin-right: 20px;
   display: flex;
   justify-content: center;
+  @media (max-width: 750px){
+    margin-top: 5px;
+    margin-right: 5px;
+  }
 }
 
 /*フッター*/
@@ -240,6 +282,9 @@ footer{
   padding-bottom: 50px;
   p{
     text-align: center;
+  }
+  a{
+    color: white;
   }
 }
 
