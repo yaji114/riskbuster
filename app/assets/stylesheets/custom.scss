@@ -30,7 +30,9 @@ a{
   display: flex;
   justify-content: flex-start;
 }
-
+.margin-0-auto{
+  margin: 0 auto;
+}
 
 /*ボタン*/
 .pr-btn{
@@ -53,10 +55,10 @@ a{
     }
   @media (max-width: 750px){
     width:100px;
-    height:25px;
-    font-size: 15px;
+    height:20px;
+    font-size: 10px;
     a{
-      height:25px;
+      height:20px;
       color: white;
     }
   }
@@ -81,10 +83,10 @@ a{
   }
   @media (max-width: 750px){
     width:100px;
-    height:25px;
-    font-size: 15px;
+    height:20px;
+    font-size: 10px;
     a{
-      height:25px;
+      height:20px;
       color: white;
     }
   }
@@ -150,10 +152,10 @@ header{
       list-style-type: none;
       display: table;
       height: 40px;
-      width: 10vw;
+      width: 20vw;
       line-height: 40px;
       text-align: center;
-      font-size: 18px;
+      font-size: 23px;
       font-weight: bold;
       color: white;
     }
@@ -332,7 +334,6 @@ input#hierarchy{
   background: #fff;
   border-radius: 5px;
   margin:0 auto;
-  padding-right: 20vw;
   padding-bottom: 40px;
   p{
     font-size:18px;

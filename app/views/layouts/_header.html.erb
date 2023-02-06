@@ -16,7 +16,7 @@
         <div class = 'menu'>メニュー</div>
         <div class = 'hamburger-menu'><i class="fas fa-bars fa-2x"></i></div>
         <ul>
-        <li>><%= link_to'新規ポスト作成', new_user_post_path(current_user) %></li>
+        <li><%= link_to'新規ポスト作成', new_user_post_path(current_user) %></li>
         <li><%= link_to'ポスト一覧', user_posts_path(current_user) %></li>
         <li><%= link_to'設定', edit_user_registration_path(current_user) %></li>
         <li><%= link_to'ログアウト', destroy_user_session_path, method: :delete %></li>

@@ -2,20 +2,20 @@
     <br />
   <div class = "form-container">
     <div class ="justify-content-flex-start">
-      <p>住所　<%= f.text_field :address, value: params[:address], size: "60" %></p>
+      <p　ontouchstart=””>住所　<%= f.text_field :address, value: params[:address], size: "60" %></p>
     </div>
     <div class ="justify-content-flex-start">
-      <p>建物金額　<%= f.number_field :building_price, value: params[:building_price], in: 1..100000000 %>　千円</p>
+      <p　ontouchstart=””>建物金額　<%= f.number_field :building_price, value: params[:building_price], in: 1..100000000 %>　千円</p>
     </div>
     <div class ="justify-content-flex-start">
-      <p>建物年(西暦)　<%= f.number_field :build_year, value: params[:build_year], min: 1900 %>　年</p>
+      <p　ontouchstart=””>建物年(西暦)　<%= f.number_field :build_year, value: params[:build_year], min: 1900 %>　年</p>
     </div>
     <div class ="justify-content-flex-start">
-      <p>建物構造　<%= f.select :structure, [["RC造", "RC造"],["鉄骨造", "鉄骨造"],["木造","木造"]],
+      <p　ontouchstart=””>建物構造　<%= f.select :structure, [["RC造", "RC造"],["鉄骨造", "鉄骨造"],["木造","木造"]],
        include_blank: "選択して下さい" %></p>
     </div>
     <div class ="justify-content-flex-start">
-      <p>建物階層　<%= f.number_field :hierarchy, value: params[:hierarchy], in: 1..10 %>　階</p>
+      <p　ontouchstart=””>建物階層　<%= f.number_field :hierarchy, value: params[:hierarchy], in: 1..10 %>　階</p>
     </div>
   </div>
   <br />
@@ -24,20 +24,27 @@
 
 
 <br /><br /><br />
+<div class = "form-container">
   <h3>基本条件</h3>
-  住所：<%= @address %>
-  緯度：<%= @lat %>
-  経度:<%= @lon %>
-  建物金額：<%= @building_price_disp %>千円
-  建物構造：<%= @structure %>
-  建物階層：<%= @hierarchy %>
-
+  住所：<%= @address %><br />
+  緯度：<%= @lat %><br />
+  経度:<%= @lon %><br />
+  建物金額：<%= @building_price_disp %>千円<br />
+  建物構造：<%= @structure %><br />
+  建物階層：<%= @hierarchy %><br />
+</div>
+<div class = "form-container">
   <h3>水災リスク</h3>
-  想定最大浸水深:<%= @depth %>m
-  水災被害想定額:<%= @flood_damage %>千円
+  想定最大浸水深:<%= @depth %>m<br />
+  水災被害想定額:<%= @flood_damage %>千円<br />
+</div>
+<div class = "form-container">
   <h3>地震リスク</h3>
-    想定震度:<%= @shindo %>　(超過発生確率：50年間に10%)
-    地震被害想定額:<%= @quake_damage %>千円
+    想定震度:<%= @shindo %>　(超過発生確率：50年間に10%)<br />
+    地震被害想定額:<%= @quake_damage %>千円<br />
+</div>
+<div class = "form-container">
   <h3>風災リスク</h3>
-  風災被害想定額:<%= @wind_damage %>千円
+  風災被害想定額:<%= @wind_damage %>千円<br />
+</div>
 <br /><br />
