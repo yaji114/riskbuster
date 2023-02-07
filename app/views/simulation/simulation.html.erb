@@ -1,6 +1,7 @@
 <%= form_with url: simulation_path, method: :get, local: true do |f| %>
     <br />
   <div class = "form-container">
+    <br />
     <div class ="justify-content-flex-start">
       <p　ontouchstart=””>住所　<%= f.text_field :address, value: params[:address], size: "60" %></p>
     </div>
@@ -19,14 +20,14 @@
     </div>
   </div>
   <br />
-  <div class = 'justify-content-center'><%= f.submit "試算実行", class: 'submit-btn'%></div>
+  <div class = 'justify-content-center'><%= f.submit "試算実行", class: 'submit-btn', onclick: "scrollresult()" %></div>
 <% end %>
 
 
 <br /><br /><br />
-<div class = "form-container">
+<div id = "result" class = "form-container">
   <h3>基本条件</h3>
-  住所：<%= @address %><br />
+  住所:<div id ="ad"><%= @address %></div><br />
   緯度：<%= @lat %><br />
   経度:<%= @lon %><br />
   建物金額：<%= @building_price_disp %>千円<br />
@@ -48,3 +49,17 @@
   風災被害想定額:<%= @wind_damage %>千円<br />
 </div>
 <br /><br />
+
+<script>
+  window.onload = function(){
+    const ad = document.getElementById('ad');
+    if(ad.childNodes.length >= 1){
+      //空でないの場合の処理
+      const resultTop = document.getElementById("result").getBoundingClientRect().top;
+      window.scrollTo({
+          top: resultTop,
+          behavior: 'smooth'
+      });
+    };
+  };
+</script>

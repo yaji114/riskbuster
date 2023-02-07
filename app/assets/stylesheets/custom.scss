@@ -161,7 +161,7 @@ header{
       width: 20vw;
       line-height: 40px;
       text-align: center;
-      font-size: 23px;
+      font-size: 30px;
       font-weight: bold;
       color: white;
     }
@@ -273,7 +273,7 @@ ul#ddmenu{
   display: flex;
   justify-content: center;
   @media (max-width: 750px){
-    margin-top: 5px;
+    margin-top: 13px;
     margin-right: 5px;
   }
 }
@@ -297,10 +297,13 @@ footer{
 }
 
 /*シミュレーション入力フォーム*/
+#ad{
+  display: inline-block;
+}
 
 input#address{
   height: 27px;
-  width:40vw;
+  width:50vw;
 }
 
 input#building_price{
