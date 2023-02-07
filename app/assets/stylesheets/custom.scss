@@ -34,6 +34,12 @@ a{
   margin: 0 auto;
 }
 
+.hid-phon{
+  @media (max-width: 750px){
+    display: none;
+  }
+}
+
 /*ボタン*/
 .pr-btn{
   width:100px;
@@ -123,7 +129,7 @@ header{
   height:80px;
   width: 100%;
   @media (max-width: 750px){
-    height:40px;
+    height:50px;
   }
 }
 
@@ -294,7 +300,7 @@ footer{
 
 input#address{
   height: 27px;
-  width:30vw;
+  width:40vw;
 }
 
 input#building_price{
