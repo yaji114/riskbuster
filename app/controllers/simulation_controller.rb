@@ -11,7 +11,7 @@ class SimulationController < ApplicationController
     @address = params[:address]
     @hierarchy = 1
     @structure = "木造"
-    unless params[:structure].blank?
+    if params[:structure].present?
       @structure = params[:structure]
     end
     if params[:hierarchy].to_f > 0
