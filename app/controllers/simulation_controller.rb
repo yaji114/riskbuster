@@ -7,10 +7,16 @@ class SimulationController < ApplicationController
   require './damage_functions/calc_wind_damage'
 
   def simulation
-    @structure = params[:structure]
     @build_year = params[:build_year].to_f
-    @hierarchy = params[:hierarchy].to_f
     @address = params[:address]
+    @hierarchy = 1
+    @structure = "木造"
+    unless params[:structure].blank?
+      @structure = params[:structure]
+    end
+    if params[:hierarchy].to_f > 0
+      @hierarchy = params[:hierarchy].to_f
+    end
 
     get_geo_response
 
